@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import quotesData from "./data/quotes.json";
 import Header from './Components/Header';
 import Footer from './Components/Footer';
-import { useState } from "react";
 import { getRandomItem } from "./utils/random";
 import Quote from './Components/Quote';
 
@@ -14,22 +14,19 @@ const religiousQuotes = quotesData.quotes.filter(
   (q) => q.category === "religious"
 );
 
-const [motivational, setMotivational] = useState(
-    getRandomItem(motivationalQuotes)
-);
-const [religious, setReligious] = useState(getRandomItem(religiousQuotes));
-
-function handleMotivationalRefresh() {
-  setMotivational(getRandomItem(motivationalQuotes));
-}
-
-function handleReligiousRefresh() {
-  setReligious(getRandomItem(religiousQuotes));
-}
-
 export default function App() {
-  function handleMotivationalRefresh() {}
-  function handleReligiousRefresh() {}
+  const [motivational, setMotivational] = useState(
+    getRandomItem(motivationalQuotes)
+  );
+  const [religious, setReligious] = useState(getRandomItem(religiousQuotes));
+
+  function handleMotivationalRefresh() {
+    setMotivational(getRandomItem(motivationalQuotes));
+  }
+
+  function handleReligiousRefresh() {
+    setReligious(getRandomItem(religiousQuotes));
+  }
 
   return (
     <View style={styles.container}>
