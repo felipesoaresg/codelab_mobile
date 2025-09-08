@@ -3,6 +3,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import quotesData from "./data/quotes.json";
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import { useState } from "react";
+import { getRandomItem } from "./utils/random";
+import Quote from './Components/Quote';
+
+
+const [motivational, setMotivational] = useState(
+    getRandomItem(motivationalQuotes)
+);
+const [religious, setReligious] = useState(getRandomItem(religiousQuotes));
 
 const motivationalQuotes = quotesData.quotes.filter(
   (q) => q.category !== "religious"
@@ -14,10 +23,16 @@ const religiousQuotes = quotesData.quotes.filter(
 export default function App() {
   function handleMotivationalRefresh() {}
   function handleReligiousRefresh() {}
-  
+
   return (
     <View style={styles.container}>
-      <Header/>
+      <Header />
+      <Quote text={motivational.text} author={motivational.author} />
+      <Quote
+        text={religious.text}
+        author={religious.author}
+        type={religious.category}
+      />
       <Footer
         onRefreshMotivational={handleMotivationalRefresh}
         onRefreshReligious={handleReligiousRefresh}
