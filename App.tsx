@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-
 import quotesData from "./data/quotes.json";
+import Header from './Components/Header';
 
 const motivationalQuotes = quotesData.quotes.filter(
   (q) => q.category !== "religious"
@@ -13,7 +13,7 @@ const religiousQuotes = quotesData.quotes.filter(
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Header/>
       <StatusBar style="auto" />
     </View>
   );
