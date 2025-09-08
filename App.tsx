@@ -7,18 +7,17 @@ import { useState } from "react";
 import { getRandomItem } from "./utils/random";
 import Quote from './Components/Quote';
 
-
-const [motivational, setMotivational] = useState(
-    getRandomItem(motivationalQuotes)
-);
-const [religious, setReligious] = useState(getRandomItem(religiousQuotes));
-
 const motivationalQuotes = quotesData.quotes.filter(
   (q) => q.category !== "religious"
 );
 const religiousQuotes = quotesData.quotes.filter(
   (q) => q.category === "religious"
 );
+
+const [motivational, setMotivational] = useState(
+    getRandomItem(motivationalQuotes)
+);
+const [religious, setReligious] = useState(getRandomItem(religiousQuotes));
 
 function handleMotivationalRefresh() {
   setMotivational(getRandomItem(motivationalQuotes));
