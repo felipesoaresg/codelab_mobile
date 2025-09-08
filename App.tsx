@@ -20,6 +20,14 @@ const religiousQuotes = quotesData.quotes.filter(
   (q) => q.category === "religious"
 );
 
+function handleMotivationalRefresh() {
+  setMotivational(getRandomItem(motivationalQuotes));
+}
+
+function handleReligiousRefresh() {
+  setReligious(getRandomItem(religiousQuotes));
+}
+
 export default function App() {
   function handleMotivationalRefresh() {}
   function handleReligiousRefresh() {}
